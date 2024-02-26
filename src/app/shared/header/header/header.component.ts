@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { LocalStorageService } from '../../services/local-storage-service/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent {
   items: MenuItem[] | undefined;
+
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {
+    this.logOut = this.logOut.bind(this);
+  }
 
   ngOnInit() {
     this.items = [
@@ -131,7 +140,13 @@ export class HeaderComponent {
       {
         label: 'Quit',
         icon: 'pi pi-fw pi-power-off',
+        command: this.logOut,
       },
     ];
+  }
+
+  private logOut(): void {
+    this.localStorageService.clearLocalStorage();
+    this.router.navigate(['login']);
   }
 }

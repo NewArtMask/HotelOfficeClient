@@ -1,0 +1,133 @@
+<div class="form-container">
+  <form
+    [formGroup]="userForm"
+    class="registration-form"
+    (ngSubmit)="submittingData()"
+  >
+    <p-card header="Registration" [style]="{ width: '360px' }">
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Type your name"
+          autocomplete="name"
+          required
+        />
+        <small
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="name.errors?.['required']">Name is required</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="surname">Surname</label>
+        <input
+          id="surname"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="surname"
+          placeholder="Type your surname"
+          autocomplete="family-name"
+          required
+        />
+        <small
+          *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="surname.errors?.['required']">Surname is required</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          class="p-inputtext"
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Type your email"
+          autocomplete="email"
+          required
+        />
+        <small
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="email.errors?.['required']">Email is required</div>
+          <div *ngIf="email.errors?.['email']">Email should be valid</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          class="p-inputtext"
+          type="password"
+          pInputText
+          formControlName="password"
+          placeholder="Type your password"
+          autocomplete="current-password"
+          required
+        />
+        <small
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="password">Password confirmation</label>
+        <input
+          id="password-confirm"
+          class="p-inputtext"
+          type="password"
+          pInputText
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+          autocomplete="current-password"
+          required
+        />
+        <small
+          *ngIf="
+            confirmPassword.invalid &&
+            (confirmPassword.dirty || confirmPassword.touched)
+          "
+          class="block p-error"
+        >
+          <div *ngIf="confirmPassword.errors?.['required']">
+            Confirmation of password is required
+          </div>
+        </small>
+        <small
+          *ngIf="
+          userForm.errors?.['passwordMismatch'] &&
+          confirmPassword.valid && password.valid
+        "
+          class="block p-error"
+        >
+          Password should match
+        </small>
+      </div>
+
+      <p-button
+        type="submit"
+        label="register"
+        styleClass="custom-btn"
+        [disabled]="isButtonDisabled"
+      >
+      </p-button>
+      <div class="mt-2">Already a member? <a routerLink="/login">Login</a></div>
+    </p-card>
+  </form>
+</div>
