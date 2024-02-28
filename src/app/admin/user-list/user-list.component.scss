@@ -1,0 +1,31 @@
+.username {
+  font-style: italic;
+}
+
+.email {
+  text-decoration-line: underline;
+}
+
+.has-no-hotel {
+  font-weight: 700;
+  color: #ff5252;
+  cursor: pointer;
+}
+
+.has-hotel {
+  font-weight: 700;
+  color: #66bb6a;
+  cursor: pointer;
+}
+
+.success {
+  color: #66bb6a;
+}
+
+.warning {
+  color: #ffa726;
+}
+
+.danger {
+  color: #ff5252;
+}

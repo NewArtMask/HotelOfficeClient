@@ -1,0 +1,150 @@
+<div class="steps-content">
+  <p-card>
+    <ng-template pTemplate="title"> Basic Information </ng-template>
+    <ng-template pTemplate="subtitle"> Enter basic information </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="hotelName">Hotel Name</label>
+          <input
+            #hotelName="ngModel"
+            id="hotelName"
+            type="text"
+            required
+            pInputText
+            [(ngModel)]="hotelInformation.hotelName"
+            [ngClass]="{
+              'ng-dirty':
+                (hotelName.invalid && submitted) ||
+                (hotelName.dirty && hotelName.invalid)
+            }"
+          />
+          <small
+            *ngIf="
+              (hotelName.invalid && submitted) ||
+              (hotelName.dirty && hotelName.invalid)
+            "
+            class="p-error"
+            >Hotel name is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="street">Street</label>
+          <input
+            #street="ngModel"
+            id="street"
+            type="text"
+            required
+            pInputText
+            [(ngModel)]="hotelInformation.street"
+            [ngClass]="{
+              'ng-dirty':
+                (street.invalid && submitted) ||
+                (street.dirty && street.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (street.invalid && submitted) || (street.dirty && street.invalid)
+            "
+            >Hotel street is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="city">City</label>
+          <input
+            #city="ngModel"
+            id="city"
+            type="text"
+            required
+            pInputText
+            [(ngModel)]="hotelInformation.city"
+            [ngClass]="{
+              'ng-dirty':
+                (city.invalid && submitted) || (city.dirty && city.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="(city.invalid && submitted) || (city.dirty && city.invalid)"
+            >Hotel city is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="zipcode">Zipcode</label>
+          <input
+            #zipcode="ngModel"
+            id="zipcode"
+            type="number"
+            required
+            pInputText
+            [(ngModel)]="hotelInformation.zipCode"
+            [ngClass]="{
+              'ng-dirty':
+                (zipcode.invalid && submitted) ||
+                (zipcode.dirty && zipcode.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (zipcode.invalid && submitted) ||
+              (zipcode.dirty && zipcode.invalid)
+            "
+            >Zipcode is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="phoneNumber">Telephone Number</label>
+          <input
+            #phoneNumber="ngModel"
+            id="phoneNumber"
+            type="number"
+            required
+            pInputText
+            [(ngModel)]="hotelInformation.phoneNumber"
+            [ngClass]="{
+              'ng-dirty':
+                (phoneNumber.invalid && submitted) ||
+                (phoneNumber.dirty && phoneNumber.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (phoneNumber.invalid && submitted) ||
+              (phoneNumber.dirty && phoneNumber.invalid)
+            "
+            >Telephone number is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="website">Website (optional)</label>
+          <input
+            #website="ngModel"
+            id="website"
+            type="text"
+            pInputText
+            [(ngModel)]="hotelInformation.website"
+            [ngClass]="{
+              'ng-dirty':
+                (website.invalid && submitted) ||
+                (website.dirty && website.invalid)
+            }"
+          />
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <p-button
+          label="Next"
+          (onClick)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

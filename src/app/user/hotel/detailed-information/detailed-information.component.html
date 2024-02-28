@@ -1,0 +1,112 @@
+<div class="steps-content">
+  <p-card>
+    <ng-template pTemplate="title"> Detailed Information </ng-template>
+    <ng-template pTemplate="subtitle"> Enter detailed information </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-fluid formgrid grid">
+        <div class="field col-12 md:col-6">
+          <label for="description">Description (optional)</label>
+          <input
+            id="description"
+            type="text"
+            pInputText
+            [(ngModel)]="detailedInformation.description"
+            [style]="{ width: '100%' }"
+            name="description"
+            placeholder="Type description of the hotel"
+            autocomplete="description"
+          />
+        </div>
+        <div class="field col-12 md:col-6">
+          <label for="roomcount">Room count</label>
+          <input
+            #roomcount="ngModel"
+            id="roomcount"
+            type="text"
+            pInputText
+            required
+            [(ngModel)]="detailedInformation.roomCount"
+            [style]="{ width: '100%' }"
+            name="roomcount"
+            placeholder="Room count in the hotel"
+            autocomplete="description"
+            [ngClass]="{
+              'ng-dirty':
+                (roomcount.invalid && submitted) ||
+                (roomcount.dirty && roomcount.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (roomcount.invalid && submitted) ||
+              (roomcount.dirty && roomcount.invalid)
+            "
+            >Room count is required.</small
+          >
+        </div>
+        <div class="field col-12 md:col-6">
+          <label for="bedcount">Bed count</label>
+          <input
+            #bedcount="ngModel"
+            id="bedcount"
+            type="text"
+            pInputText
+            required
+            [(ngModel)]="detailedInformation.bedCount"
+            [style]="{ width: '100%' }"
+            name="bedcount"
+            placeholder="Bed count in the hotel"
+            autocomplete="description"
+            [ngClass]="{
+              'ng-dirty':
+                (bedcount.invalid && submitted) ||
+                (bedcount.dirty && bedcount.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (bedcount.invalid && submitted) ||
+              (bedcount.dirty && bedcount.invalid)
+            "
+            >Room count is required.</small
+          >
+        </div>
+        <div class="field col-12 md:col-6">
+          <label for="facilities">Facilities (optional)</label>
+          <p-multiSelect
+            [options]="facilities"
+            [(ngModel)]="detailedInformation.facilities"
+            optionLabel="name"
+            placeholder="Select facilities"
+          ></p-multiSelect>
+        </div>
+        <div class="field col-12">
+          <label for="attractions">Attractions (optional)</label>
+          <p-multiSelect
+            [options]="attractions"
+            [(ngModel)]="detailedInformation.attractions"
+            optionLabel="name"
+            placeholder="Select attractions"
+          ></p-multiSelect>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="buttons grid grid-nogutter justify-content-between">
+        <p-button
+          label="Back"
+          (onClick)="prevPage()"
+          icon="pi pi-angle-left"
+        ></p-button>
+        <p-button
+          label="Next"
+          (onClick)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

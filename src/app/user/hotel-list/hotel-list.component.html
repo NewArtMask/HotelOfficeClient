@@ -1,0 +1,10 @@
+<div class="card flex justify-content-center">
+  @if(hotelList.length) {
+  <p-accordion [activeIndex]="0">
+    @for (hotel of hotelList; track hotel) {
+    <p-accordionTab header="{{ hotel.basicInformation.hotelName }}">
+      <app-hotel-info [info]="hotel"></app-hotel-info> </p-accordionTab
+    >}
+  </p-accordion>
+  }
+</div>

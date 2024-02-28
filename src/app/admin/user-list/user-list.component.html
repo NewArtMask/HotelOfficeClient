@@ -1,0 +1,33 @@
+<div class="card">
+  <p-table
+    [columns]="cols"
+    [value]="users"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td
+          *ngFor="let col of columns"
+          [ngClass]="{
+            'has-hotel': col.field === 'hotelCount' && rowData['hotelCount'] > 0,
+            'has-no-hotel': col.field === 'hotelCount' && rowData['hotelCount'] === 0,
+            username: col.field === 'name' || col.field === 'surname',
+            email: col.field === 'email',
+          }"
+          (click)="
+            col.field === 'hotelCount' && getUserHotels(rowData['userId'])
+          "
+        >
+          {{ rowData[col.field] }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

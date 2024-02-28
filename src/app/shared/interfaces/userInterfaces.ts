@@ -1,5 +1,6 @@
 import { UserRole } from '../enums/user-role.enum';
 import { UserStatus } from '../enums/user-status.enum';
+import { HotelInformation } from './hotelInterfaces';
 
 export interface UserDto {
   name: string;
@@ -26,4 +27,14 @@ export interface LoginResponseDto {
   role: UserRole;
   userStatus: UserStatus;
   token: string;
+}
+
+export interface User {
+  userId: string;
+  name: string;
+  surname: string;
+  email: string;
+  role: UserRole;
+  userStatus: UserStatus;
+  hotelCount: number;
 }

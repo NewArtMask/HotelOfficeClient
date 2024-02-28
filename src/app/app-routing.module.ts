@@ -35,7 +35,7 @@ const routes: Routes = [
     canMatch: [adminLoadGuard],
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
   },

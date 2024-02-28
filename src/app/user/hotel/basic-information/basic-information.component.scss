@@ -1,0 +1,33 @@
+.steps-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+p-card {
+  width: 80%;
+  max-width: 800px;
+}
+
+p-fluid {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+// input.ng-dirty.ng-invalid {
+//   border-color: #ff5555;
+// }
