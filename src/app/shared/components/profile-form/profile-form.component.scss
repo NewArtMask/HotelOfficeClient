@@ -1,11 +1,11 @@
-.container {
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 80vh;
 }
 
-.form {
+.registration-form {
   max-width: 400px;
   width: 100%;
   padding: 20px;
@@ -27,6 +27,5 @@
 }
 
 .field input {
-  border-radius: 5px;
   margin-bottom: 10px;
 }

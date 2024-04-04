@@ -1,1 +1,25 @@
-<p [style]="{ color: 'black' }">admin-profile works!</p>
+<div class="container">
+  <form (ngSubmit)="submit()" [formGroup]="adminForm" class="form">
+    <div class="field">
+      <label for="name">Name</label>
+      <input formControlName="name" type="text" pInputText required />
+      <small
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="name.errors?.['required']">Name is required</div>
+      </small>
+    </div>
+    <div class="field">
+      <label for="surname">Surname</label>
+      <input formControlName="surname" type="text" pInputText required />
+      <small
+        *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="surname.errors?.['required']">Surname is required</div>
+      </small>
+    </div>
+    <p-button type="submit" label="Submit" styleClass="custom-btn"></p-button>
+  </form>
+</div>

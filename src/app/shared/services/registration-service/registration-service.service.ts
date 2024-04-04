@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ import { LocalStorageService } from '../local-storage-service/local-storage.serv
 export class RegistrationServiceService {
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) {}
 
   public registerUser(userDto: UserDto): Observable<RegistrationResponseDto> {
@@ -40,5 +42,10 @@ export class RegistrationServiceService {
     this.localStorageService.setUserId(userData.userId);
     this.localStorageService.setUserRole(userData.role);
     this.localStorageService.setUserStatus(userData.userStatus);
+  }
+
+  public logOut(): void {
+    this.localStorageService.clearLocalStorage();
+    this.router.navigate(['login']);
   }
 }

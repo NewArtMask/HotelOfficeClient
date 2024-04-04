@@ -6,11 +6,13 @@ import { LoginComponent } from './shared/login/login.component';
 import { authGuard } from './shared/guards/auth-guard/auth.guard';
 import { userLoadGuard } from './shared/guards/user-load-guard/user-load.guard';
 import { adminLoadGuard } from './shared/guards/admin-load-guard/admin-load.guard';
+import { homeGuard } from './shared/guards/home.guard';
 
 const routes: Routes = [
   {
     path: 'home',
     component: MainComponent,
+    canActivate: [homeGuard],
   },
   {
     path: 'registration',
@@ -36,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];

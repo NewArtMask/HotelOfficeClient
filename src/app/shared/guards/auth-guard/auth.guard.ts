@@ -7,5 +7,6 @@ export const authGuard: CanActivateFn = (route, state) => {
     inject(Router).navigate(['home']);
     return false;
   }
+
   return true;
 };

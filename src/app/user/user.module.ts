@@ -9,8 +9,10 @@ import { CardModule } from 'primeng/card';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { MessagesModule } from 'primeng/messages';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HoteInfoFilerPipe } from '../shared/pipes/hote-info-filer-pipe/hote-info-filer.pipe';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { BasicInformationComponent } from './hotel/basic-information/basic-information.component';
@@ -19,6 +21,7 @@ import { DetailedInformationComponent } from './hotel/detailed-information/detai
 import { HotelComponent } from './hotel/hotel.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HotelInfoComponent } from '../shared/components/hotel-info/hotel-info.component';
+import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 
 const routerConfig: Routes = [
   {
@@ -58,6 +61,7 @@ const routerConfig: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routerConfig),
     StepsModule,
     ToastModule,
@@ -65,8 +69,12 @@ const routerConfig: Routes = [
     ButtonModule,
     MultiSelectModule,
     AccordionModule,
+    DynamicDialogModule,
+    MessagesModule,
     HoteInfoFilerPipe,
     HotelInfoComponent,
+    ProfileFormComponent,
   ],
+  providers: [DialogService],
 })
 export class UserModule {}

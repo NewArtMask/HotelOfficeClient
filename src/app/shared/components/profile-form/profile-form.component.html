@@ -1,0 +1,58 @@
+<div class="form-container">
+  <form
+    [formGroup]="adminForm"
+    class="registration-form"
+    (ngSubmit)="submittingData()"
+  >
+    <p-card header="Registration" [style]="{ width: '360px' }">
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Type your name"
+          autocomplete="name"
+          required
+        />
+        <small
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="name.errors?.['required']">Name is required</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="surname">Surname</label>
+        <input
+          id="surname"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="surname"
+          placeholder="Type your surname"
+          autocomplete="family-name"
+          required
+        />
+        <small
+          *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="surname.errors?.['required']">Surname is required</div>
+        </small>
+      </div>
+
+      <p-button
+        type="submit"
+        label="register"
+        styleClass="custom-btn"
+        [disabled]="isButtonDisabled"
+      >
+      </p-button>
+      <div class="mt-2">Already a member? <a routerLink="/login">Login</a></div>
+    </p-card>
+  </form>
+</div>

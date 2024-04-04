@@ -10,6 +10,11 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { HotelInfoComponent } from '../shared/components/hotel-info/hotel-info.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesModule } from 'primeng/messages';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 
 const routerConfig = [
   {
@@ -43,6 +48,11 @@ const routerConfig = [
     TableModule,
     AccordionModule,
     HotelInfoComponent,
+    ProfileFormComponent,
+    ReactiveFormsModule,
+    MessagesModule,
+    InputTextModule,
+    ButtonModule,
   ],
 })
 export class AdminModule {}

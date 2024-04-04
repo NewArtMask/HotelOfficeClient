@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { UserRole } from '../../enums/user-role.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private role = new Subject<UserRole>();
+  private role = new BehaviorSubject<UserRole | null>(null);
   currentUserRole = this.role.asObservable();
 
   private isLogin = new Subject<boolean>();

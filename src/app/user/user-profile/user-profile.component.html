@@ -1,3 +1,110 @@
-<div>
-  <p [style]="{ color: 'black' }">user-profile works!</p>
+<p-toast></p-toast>
+<div class="form-container flex justify-content-center">
+  @if (profileForm) {
+  <form
+    [formGroup]="profileForm"
+    class="profile-form"
+    (ngSubmit)="submittingData()"
+  >
+    <p-card header="Profile Data" [style]="{ width: '360px' }">
+      <div class="field flex flex-column">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Type your name"
+          autocomplete="name"
+          required
+        />
+        <small
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="name.errors?.['required']">Name is required</div>
+        </small>
+      </div>
+
+      <div class="field flex flex-column">
+        <label for="surname">Surname</label>
+        <input
+          id="surname"
+          class="p-inputtext"
+          type="text"
+          pInputText
+          formControlName="surname"
+          placeholder="Type your surname"
+          autocomplete="family-name"
+          required
+        />
+        <small
+          *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="surname.errors?.['required']">Surname is required</div>
+        </small>
+      </div>
+
+      <div class="field flex flex-column">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          class="p-inputtext"
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="Type your email"
+          autocomplete="email"
+          required
+        />
+        <small
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="email.errors?.['required']">Email is required</div>
+          <div *ngIf="email.errors?.['email']">Email should be valid</div>
+        </small>
+      </div>
+
+      <p-button
+        type="submit"
+        label="submit changes"
+        styleClass="custom-btn"
+        [disabled]="isButtonDisabled || (isEdit && !isInitialDataChanged)"
+      >
+      </p-button>
+
+      <div>
+        @if (!isEdit) {
+        <p-button
+          type="button"
+          label="edit profile"
+          styleClass="custom-btn -mt-1"
+          (click)="editProfile()"
+        >
+        </p-button>
+        } @else {
+        <p-button
+          type="button"
+          label="cancel editing"
+          styleClass="custom-btn p-button-outlined -mt-1"
+          (click)="cancelEdit()"
+        >
+        </p-button>
+        }
+      </div>
+
+      <div class="mt-2">
+        Want to change your password?
+        <span (click)="openChangePasswordDialog()"
+          ><b class="text-primary cursor-pointer underline">CHANGE</b></span
+        >
+      </div>
+    </p-card>
+  </form>
+  } @else {
+  <div>Loading...</div>
+  }
 </div>
